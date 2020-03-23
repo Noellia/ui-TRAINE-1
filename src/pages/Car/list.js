@@ -30,7 +30,7 @@ class App extends PureComponent {
                 
                        
                 <hr/>
-                <h3 align="right" ><Link  to="/car/edit/new"> Ingresar nuevo </Link></h3>
+                <h3 align="right" ><Link to="/cars/edit/new"> Ingresar nuevo </Link></h3>
                 
                 <Table {...{data: cars, ...tableProps, onSort: onSort}}/>
                 
