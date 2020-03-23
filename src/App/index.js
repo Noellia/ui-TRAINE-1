@@ -6,7 +6,7 @@ import {
     Link
 } from "react-router-dom";
 
-import Cars from '../pages/Cars'
+import Cars from '../pages/Car'
 import Country from '../pages/Country';
 import Home from '../pages/Home'
 import Instruments from '../pages/Instruments'
@@ -14,17 +14,21 @@ import Instruments from '../pages/Instruments'
 export default function BasicExample() {
     return (
         <Router>
+            <br/>
             <>
-                <nav>
+            <h3>
+                 <nav>
                     &nbsp;&nbsp;&nbsp;
-                    <Link to="/">Home</Link>
+                     <Link to="/"> Home </Link>
                     &nbsp;&nbsp;&nbsp;
-                    <Link to="/country">Country</Link>
+                    <Link to="/country">Countries</Link>
                     &nbsp;&nbsp;&nbsp;
                     <Link to="/cars">Cars</Link>
                     &nbsp;&nbsp;&nbsp;
                     <Link to="/instruments">Instruments</Link>
                 </nav>
+                <br/>
+            </h3>
 
                 <hr />
 

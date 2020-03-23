@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {
-    fetchCountriesRequested,
-    sortCountry
-} from '../../actions/country'
+    fetchCarsRequested,
+    sortCar
+} from '../../actions/car'
 
-import keys from 'lodash/keys';
-import head from 'lodash/head';
+// import keys from 'lodash/keys';
+// import head from 'lodash/head';
 
 class App extends PureComponent {
     constructor(props) {
@@ -17,23 +17,22 @@ class App extends PureComponent {
     }
 
     componentDidMount() {
-        this.props.getCountries();
+        this.props.getCars();
     }
 
     render() {
-        const {countries, loading, tableProps, onSort} = this.props;
+        const {cars, loading, tableProps, onSort} = this.props;
         return (
             <div>
                 
                 <h1 align="center">Tabla de datos </h1>
                 <br/>
                 
-                
-                
+                       
                 <hr/>
-                <h3 align="right" ><Link  to="/country/edit/new"> Ingresar nuevo </Link></h3>
+                <h3 align="right" ><Link  to="/car/edit/new"> Ingresar nuevo </Link></h3>
                 
-                <Table {...{data: countries, ...tableProps, onSort: onSort}}/>
+                <Table {...{data: cars, ...tableProps, onSort: onSort}}/>
                 
             </div>
         )
@@ -41,17 +40,17 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
-    const {documents: {countries, loading}, tableProps} = state.country;
+    const {documents: {cars, loading}, tableProps} = state.car;
     return {
         tableProps,
-        countries,
+        cars,
         loading
     };
 }
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
-    getCountries: () => dispatch(fetchCountriesRequested()),
-    onSort: sort => dispatch(sortCountry(sort))
+    getCars: () => dispatch(fetchCarsRequested()),
+    onSort: sort => dispatch(sortCar(sort))
 })
 
 export default connect(
