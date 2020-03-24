@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {
-    fetchCountriesRequested,
-    sortCountry
-} from '../../actions/country'
+    fetchContactsRequested,
+    sortContact
+} from '../../actions/contact'
 
 import keys from 'lodash/keys';
 import head from 'lodash/head';
@@ -17,22 +17,21 @@ class App extends PureComponent {
     }
 
     componentDidMount() {
-        this.props.getCountries();
+        this.props.getContacts();
     }
 
     render() {
-        const {countries, loading, tableProps, onSort} = this.props;
+        const {contacts, loading, tableProps, onSort} = this.props;
         return (
             <div>
                 
                 <h1 align="center">Tabla de datos </h1>
                 <br/>
-                
-                                
+
                 <hr/>
-                <h3 align="right" ><Link  to="/countries/edit/new"> Ingresar nuevo </Link></h3>
+                <h3 align="right" ><Link to="/contacts/edit/new">Ingresar nuevo</Link></h3>
                 
-                <Table {...{data: countries, ...tableProps, onSort: onSort}}/>
+                <Table {...{data: contacts, ...tableProps, onSort: onSort}}/>
                 
             </div>
         )
@@ -40,17 +39,17 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
-    const {documents: {countries, loading}, tableProps} = state.country;
+    const {documents: {contacts, loading}, tableProps} = state.contact;
     return {
         tableProps,
-        countries,
+        contacts,
         loading
     };
 }
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
-    getCountries: () => dispatch(fetchCountriesRequested()),
-    onSort: sort => dispatch(sortCountry(sort))
+    getContacts: () => dispatch(fetchContactsRequested()),
+    onSort: sort => dispatch(sortContact(sort))
 })
 
 export default connect(
