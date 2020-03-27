@@ -3,8 +3,10 @@ import Http from '.';
 const API = 'api/contacts';
 
 class Contact {
-    static fetch() {
-        return Http.get(API);
+    static fetch(filters) {
+        console.log(filters);
+        const filterObj = new URLSearchParams(filters).toString();
+        return Http.get(`${API}?${filterObj}`);
     }
 }
 

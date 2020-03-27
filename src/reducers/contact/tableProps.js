@@ -10,6 +10,7 @@ const initialState = {
         'job_title',
         'race',
         'createdAt',
+        'actions'
     ],
     headers: [
         {
@@ -29,13 +30,17 @@ const initialState = {
         },
         {
             id: 'race',
-            label: 'Nacionalidad',
+            label: 'Raza',
             sort: 'desc'
         },
         {
             id: 'createdAt',
             label: 'Creado',
             sort: 'desc'
+        },
+        {
+            id: 'actions',
+            label: 'Acciones'
         }
     ]
 };

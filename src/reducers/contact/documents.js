@@ -8,7 +8,7 @@ import orderBy from 'lodash/orderBy'
 
 const initialState = {
     loading: false,
-    countries: []
+    contacts: []
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
         case FETCH_CONTACTS_REQUESTED:
             return {...state, loading: true};
         case FETCH_CONTACTS_SUCCEEDED:
-            return {...state, loading: false, contacts: action.contacts};
+            const {contacts, limit, total} = action;
+            return {...state, loading: false, contacts, limit, total};
         case SORT_CONTACT:
             return {
                 ...state,

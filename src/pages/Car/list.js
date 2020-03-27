@@ -2,54 +2,83 @@ import React, {PureComponent} from 'react';
 import Table from '../../components/table';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {
+    Container,
+    Button,
+    Row,
+    Col,
+    Spinner
+} from 'reactstrap';
 
 import {
     fetchCarsRequested,
     sortCar
 } from '../../actions/car'
 
-// import keys from 'lodash/keys';
-// import head from 'lodash/head';
-
 class App extends PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.getCars();
     }
 
+    handlePagination = (skip) => {
+        this.props.getCars({skip});
+    } 
+
     render() {
-        const {cars, loading, tableProps, onSort} = this.props;
+        const {
+            cars,
+            limit,
+            total,
+            tableProps,
+            onSort,
+            loading
+        } = this.props;
         return (
-            <div>
-                
-                <h1 align="center">Tabla de datos </h1>
-                <br/>
-                
-                       
+            <Container>
+                <Row>
+                    <Col>
+                        <h3>Tabla de datos </h3>
+                    </Col>
+                    <Col sm="3">
+                        <Button color="primary" tag={Link} to="/car/edit/new"> Nuevo </Button>
+                    </Col>
+                </Row>
                 <hr/>
-                <h3 align="right" ><Link to="/cars/edit/new"> Ingresar nuevo </Link></h3>
-                
-                <Table {...{data: cars, ...tableProps, onSort: onSort}}/>
-                
-            </div>
+                <Row>
+                    <Col>
+                        {loading && (
+                            <Spinner color="danger" />
+                        )}
+                        {!loading && (
+                            <Table {...{
+                                data: cars,
+                                ...tableProps,
+                                onSort,
+                                limit,
+                                total,
+                                onPageClick: this.handlePagination
+                            }}/>
+                        )}
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
 
 const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
-    const {documents: {cars, loading}, tableProps} = state.car;
+    const {documents: {cars, limit, total, loading}, tableProps} = state.car;
     return {
         tableProps,
         cars,
+        limit,
+        total,
         loading
     };
 }
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
-    getCars: () => dispatch(fetchCarsRequested()),
+    getCars: filters => dispatch(fetchCarsRequested(filters)),
     onSort: sort => dispatch(sortCar(sort))
 })
 

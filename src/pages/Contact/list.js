@@ -2,53 +2,83 @@ import React, {PureComponent} from 'react';
 import Table from '../../components/table';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {
+    Container,
+    Button,
+    Row,
+    Col,
+    Spinner
+} from 'reactstrap';
 
 import {
     fetchContactsRequested,
     sortContact
 } from '../../actions/contact'
 
-import keys from 'lodash/keys';
-import head from 'lodash/head';
-
 class App extends PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.getContacts();
     }
 
-    render() {
-        const {contacts, loading, tableProps, onSort} = this.props;
-        return (
-            <div>
-                
-                <h1 align="center">Tabla de datos </h1>
-                <br/>
+    handlePagination = (skip) => {
+        this.props.getContacts({skip});
+    } 
 
+    render() {
+        const {
+            contacts,
+            limit,
+            total,
+            tableProps,
+            onSort,
+            loading
+        } = this.props;
+        return (
+            <Container>
+                <Row>
+                    <Col>
+                        <h3>Tabla de datos </h3>
+                    </Col>
+                    <Col sm="3">
+                        <Button color="primary" tag={Link} to="/contact/edit/new"> Nuevo </Button>
+                    </Col>
+                </Row>
                 <hr/>
-                <h3 align="right" ><Link to="/contacts/edit/new">Ingresar nuevo</Link></h3>
-                
-                <Table {...{data: contacts, ...tableProps, onSort: onSort}}/>
-                
-            </div>
+                <Row>
+                    <Col>
+                        {loading && (
+                            <Spinner color="danger" />
+                        )}
+                        {!loading && (
+                            <Table {...{
+                                data: contacts,
+                                ...tableProps,
+                                onSort,
+                                limit,
+                                total,
+                                onPageClick: this.handlePagination
+                            }}/>
+                        )}
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
 
 const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
-    const {documents: {contacts, loading}, tableProps} = state.contact;
+    const {documents: {contacts, limit, total, loading}, tableProps} = state.contact;
     return {
         tableProps,
         contacts,
+        limit,
+        total,
         loading
     };
 }
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
-    getContacts: () => dispatch(fetchContactsRequested()),
+    getContacts: filters => dispatch(fetchContactsRequested(filters)),
     onSort: sort => dispatch(sortContact(sort))
 })
 
