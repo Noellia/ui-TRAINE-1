@@ -12,7 +12,8 @@ import {
 
 import {
     fetchContactsRequested,
-    sortContact
+    sortContact,
+    submitContactDataRequested
 } from '../../actions/contact'
 
 class App extends PureComponent {
@@ -79,7 +80,9 @@ const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
     getContacts: filters => dispatch(fetchContactsRequested(filters)),
-    onSort: sort => dispatch(sortContact(sort))
+    onSort: sort => dispatch(sortContact(sort)),
+    submitContactData: () => dispatch(submitContactDataRequested()) 
+
 })
 
 export default connect(

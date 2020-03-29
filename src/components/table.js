@@ -44,34 +44,42 @@ export default ({data, columns, headers, onSort, limit, total, onPageClick, curr
                                 })}
                             </tr>
                         ))}
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colSpan={columns.length}>
-                                <Pagination aria-label="Page navigation example">
-                                    <PaginationItem>
-                                        <PaginationLink first onClick={() => onPageClick(0)} />
-                                    </PaginationItem>
-                                    <PaginationItem>
-                                        <PaginationLink previous onClick={() => onPageClick(currentPage - 1)} />
-                                    </PaginationItem>
-                                    {times(ceil(total/toNumber(limit)), it => (
-                                        <PaginationItem>
-                                            <PaginationLink onClick={() => onPageClick(it)}>
-                                                {it + 1}
-                                            </PaginationLink>
-                                        </PaginationItem>
-                                    ))}
-                                    <PaginationItem>
-                                        <PaginationLink next onClick={() => onPageClick(currentPage + 1)} />
-                                    </PaginationItem>
-                                </Pagination>
-                            </td>
-                        </tr>
-                    </tfoot>
+                        
+                        </tbody>
                 </Table>
+    
+
+                <div align="center">
+                    <tfoot>
+                            <tr>
+                                <td colSpan= {columns.length}>
+                                            <Pagination aria-label="Page navigation example">
+                                                <PaginationItem>
+                                                    <PaginationLink first onClick={() => onPageClick(0)} />
+                                                </PaginationItem>
+                                                <PaginationItem>
+                                                    <PaginationLink previous onClick={() => onPageClick(currentPage - 1)} />
+                                                </PaginationItem>
+                                                {times(ceil(total/toNumber(limit)), it => (
+                                                    <PaginationItem>
+                                                        <PaginationLink onClick={() => onPageClick(it)}>
+                                                            {it + 1}
+                                                        </PaginationLink>
+                                                    </PaginationItem>
+                                                ))}
+                                                <PaginationItem>
+                                                    <PaginationLink next onClick={() => onPageClick(currentPage + 1)} />
+                                                </PaginationItem>
+                                            
+                                            </Pagination>
+                                        
+                                </td>
+                            </tr>
+                    </tfoot>
+                </div>
             </Col>
         </Row>
     </Container>
+                 
 
 )

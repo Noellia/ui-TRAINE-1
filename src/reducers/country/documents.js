@@ -1,7 +1,8 @@
 import {
     FETCH_COUNTRIES_SUCCEEDED,
     FETCH_COUNTRIES_REQUESTED,
-    SORT_COUNTRY
+    SORT_COUNTRY,
+    
 } from '../../actions/country';
 
 import orderBy from 'lodash/orderBy'

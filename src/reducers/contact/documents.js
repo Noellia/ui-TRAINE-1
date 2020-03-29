@@ -1,14 +1,16 @@
 import {
     FETCH_CONTACTS_REQUESTED,
     FETCH_CONTACTS_SUCCEEDED,
-    SORT_CONTACT
+    SORT_CONTACT,
+    SUBMIT_CONTACT_DATA_SUCCEEDED
 } from '../../actions/contact';
 
 import orderBy from 'lodash/orderBy'
 
 const initialState = {
     loading: false,
-    contacts: []
+    contacts: [],
+    contact: {}
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +29,9 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
+
+        case SUBMIT_CONTACT_DATA_SUCCEEDED:
+            return {...state, success: true, contact: {}};
         default:
             return state;
     }

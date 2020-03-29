@@ -7,6 +7,7 @@ export const fetchCountriesSucceeded = (countries, limit, total) => ({
     countries, limit, total
 }) // Disparador o Action Creator
 
+
 // Accion | Action
 export const SORT_COUNTRY = 'SORT_COUNTRY';
 // Disparador o Action Creator
