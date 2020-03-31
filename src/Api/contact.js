@@ -14,6 +14,9 @@ class Contact {
         }
         return Http.put(`${API}/${contact.id}`, {...contact});
     }
+    static fetchOne(id) {
+        return Http.get(`${API}/${id}`);
+    }
 }
 
 export default Contact;

@@ -17,7 +17,7 @@ import times from 'lodash/times';
 import ceil from 'lodash/ceil';
 import toNumber from 'lodash/toNumber';
 
-export default ({data, columns, headers, onSort, limit, total, onPageClick, currentPage}) => (
+export default ({data, columns, headers, onSort, limit, total, onPageClick, currentPage, linkTo}) => (
     <Container fluid>
         <Row>
             <Col>
@@ -38,7 +38,7 @@ export default ({data, columns, headers, onSort, limit, total, onPageClick, curr
                             <tr key={d.id} className={d.deleted ? "bg-danger": ""}>
                                 {map(columns, column => {
                                     if(column === 'actions') {
-                                        return (<td><Button tag={Link} color="primary" to={`/country/edit/${d.code}`}> Edición </Button></td>);
+                                        return (<td><Button tag={Link} color="primary" to={`/${linkTo}/edit/${d.id}`}> Edición </Button></td>);
                                     }
                                     return (<td>{get(d, column)}</td>);
                                 })}

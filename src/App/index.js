@@ -17,8 +17,7 @@ export default function BasicExample() {
         <Router>
             <br/>
             <>
-            <h3>
-                 <nav>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light text-center"> 
                     &nbsp;&nbsp;&nbsp;
                      <Link to="/"> Home </Link>
                     &nbsp;&nbsp;&nbsp;
@@ -30,10 +29,8 @@ export default function BasicExample() {
                     &nbsp;&nbsp;&nbsp;
                     <Link to="/instruments">Instruments</Link>
                 </nav>
-                <br/>
-            </h3>
-
-                <hr />
+            <br/>
+            <hr />
 
                 <Switch>
                     <Route exact path="/" component={Home}/>

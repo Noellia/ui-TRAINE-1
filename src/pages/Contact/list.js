@@ -57,7 +57,8 @@ class App extends PureComponent {
                                 onSort,
                                 limit,
                                 total,
-                                onPageClick: this.handlePagination
+                                onPageClick: this.handlePagination,
+                                linkTo: 'contacts'
                             }}/>
                         )}
                     </Col>
