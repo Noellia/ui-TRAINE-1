@@ -1,3 +1,5 @@
+import constant from 'lodash/constant';
+
 export const FETCH_CARS_REQUESTED = 'FETCH_CARS_REQUESTED'; // Accion | Action
 export const FETCH_CARS_SUCCEEDED = 'FETCH_CARS_SUCCEEDED'; // Accion | Action
 
@@ -7,7 +9,24 @@ export const fetchCarsSucceeded = (cars, limit, total) => ({
     cars, limit, total
 }) // Disparador o Action Creator
 
+export const SUBMIT_CAR_DATA_REQUESTED = 'SUBMIT_CAR_DATA_REQUESTED';
+export const SUBMIT_CAR_DATA_SUCCEEDED = 'SUBMIT_CAR_DATA_SUCCEEDED';
+
+export const submitCarDataRequested = constant({type: SUBMIT_CAR_DATA_REQUESTED});
+export const submitCarDataSucceeded = constant({type: SUBMIT_CAR_DATA_SUCCEEDED});
+
+export const SET_CAR_DATA = 'SET_CAR_DATA';
+export const setCarData = car => ({type: SET_CAR_DATA, car});
+
 // Accion | Action
 export const SORT_CAR = 'SORT_CAR';
 // Disparador o Action Creator
 export const sortCar = sort => ({type: SORT_CAR, sort});
+
+export const FETCH_CAR_REQUESTED = 'FETCH_CAR_REQUESTED'; // Accion | Action
+export const FETCH_CAR_SUCCEEDED = 'FETCH_CAR_SUCCEEDED'; // Accion | Action
+
+export const fetchCarRequested = id => ({type: FETCH_CAR_REQUESTED, id}) // Disparador o Action Creator
+export const fetchCarSucceeded = (car) => ({
+    type: FETCH_CAR_SUCCEEDED, car
+}) // Disparador o Action Creator

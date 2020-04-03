@@ -1,14 +1,22 @@
 import {
     FETCH_CARS_REQUESTED,
     FETCH_CARS_SUCCEEDED,
-    SORT_CAR
+    SORT_CAR,
+    SUBMIT_CAR_DATA_SUCCEEDED,
+    FETCH_CAR_REQUESTED,
+    FETCH_CAR_SUCCEEDED,
+    SET_CAR_DATA
 } from '../../actions/car';
 
 import orderBy from 'lodash/orderBy'
 
 const initialState = {
     loading: false,
-    cars: []
+    success: false,
+    working: false,
+    cars: [],
+    car: {}
+    
 };
 
 export default (state = initialState, action) => {
@@ -27,7 +35,15 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
-        default:
-            return state;
+            case SUBMIT_CAR_DATA_SUCCEEDED:
+                return {...state, success: true, car: {}};
+            case FETCH_CAR_REQUESTED:
+                return {...state, car: {}, loading: true};
+            case FETCH_CAR_SUCCEEDED:
+                return {...state, car: action.car, loading: false};
+            case SET_CAR_DATA:
+                return {...state, car: action.car, loading:false};
+            default:
+                return state;
     }
 }

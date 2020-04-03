@@ -11,23 +11,23 @@ import {
 } from 'reactstrap';
 
 import {
-    fetchCountriesRequested,
-    sortCountry,
-    submitCountryDataRequested
-} from '../../actions/country'
+    fetchInstrumentsRequested,
+    sortInstrument,
+    submitInstrumentDataRequested
+} from '../../actions/instrument'
 
 class App extends PureComponent {
     componentDidMount() {
-        this.props.getCountries();
+        this.props.getInstruments();
     }
 
     handlePagination = (skip) => {
-        this.props.getCountries({skip});
+        this.props.getInstruments({skip});
     } 
 
     render() {
         const {
-            countries,
+            instruments,
             limit,
             total,
             tableProps,
@@ -41,7 +41,7 @@ class App extends PureComponent {
                         <h3>Tabla de datos </h3>
                     </Col>
                     <Col sm="3">
-                        <Button color="primary" tag={Link} to="/countries/edit/new"> Nuevo </Button>
+                        <Button color="primary" tag={Link} to="/instruments/edit/new"> Nuevo </Button>
                     </Col>
                 </Row>
                 <hr/>
@@ -52,13 +52,13 @@ class App extends PureComponent {
                         )}
                         {!loading && (
                             <Table {...{
-                                data: countries,
+                                data: instruments,
                                 ...tableProps,
                                 onSort,
                                 limit,
                                 total,
                                 onPageClick: this.handlePagination,
-                                linkTo: 'countries'
+                                linkTo: 'instruments'
                             }}/>
                         )}
                     </Col>
@@ -69,10 +69,10 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
-    const {documents: {countries, limit, total, loading}, tableProps} = state.country;
+    const {documents: {instruments, limit, total, loading}, tableProps} = state.instrument;
     return {
         tableProps,
-        countries,
+        instruments,
         limit,
         total,
         loading
@@ -80,9 +80,10 @@ const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
 }
 
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
-    getCountries: filters => dispatch(fetchCountriesRequested(filters)),
-    onSort: sort => dispatch(sortCountry(sort)),
-    submitCountryData: () => dispatch(submitCountryDataRequested())
+    getInstruments: filters => dispatch(fetchInstrumentsRequested(filters)),
+    onSort: sort => dispatch(sortInstrument(sort)),
+    submitInstrumentData: () => dispatch(submitInstrumentDataRequested()) 
+
 })
 
 export default connect(

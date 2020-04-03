@@ -10,7 +10,7 @@ import Cars from '../pages/Car'
 import Contact from '../pages/Contact'
 import Country from '../pages/Country'
 import Home from '../pages/Home'
-import Instruments from '../pages/Instruments'
+import Instruments from '../pages/Instrument'
 
 export default function BasicExample() {
     return (

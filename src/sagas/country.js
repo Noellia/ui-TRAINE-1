@@ -1,12 +1,15 @@
 import {
     call,
     put,
-    delay
+    delay,
+    select
 } from 'redux-saga/effects';
 
 import CountryAPI from '../Api/country';
 import {
-    fetchCountriesSucceeded
+    fetchCountriesSucceeded,
+    fetchCountrySucceeded,
+    submitCountryDataSucceeded
 } from '../actions/country';
 
 export function* fetchCountries({filter}) {
@@ -22,4 +25,21 @@ export function* fetchCountries({filter}) {
     } catch (err) {
         alert(JSON.stringify(err));
     }
+
+}
+
+export function* submitCountryData() {
+    const {country} = yield select(state => state.country.documents);
+    const result = yield call(CountryAPI.submitCountry, country);
+    if (result.success) {
+        yield put(
+            submitCountryDataSucceeded()
+        );
+    }
+}
+
+export function* fetchCountry({id}) {
+    // hacer Llmado a la api para el fetch de 1 contacto
+    const country = yield call(CountryAPI.fetchOne, id);
+    yield put(fetchCountrySucceeded(country))
 }

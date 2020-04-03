@@ -1,23 +1,23 @@
 import Http from '.';
 
-const API = 'api/cars';
+const API = 'api/instrument';
 
-class Car {
+class Instrument {
     static fetch(filters) {
         console.log(filters);
         const filterObj = new URLSearchParams(filters).toString();
         return Http.get(`${API}?${filterObj}`);
     }
 
-    static submitCar(car) {
-        if (!car.id) {
-            return Http.post(API, {...car});
+    static submitInstrument(instrument) {
+        if (!instrument.id) {
+            return Http.post(API, {...instrument});
         }
-        return Http.put(`${API}/${car.id}`, {...car});
+        return Http.put(`${API}/${instrument.id}`, {...instrument});
     }
     static fetchOne(id) {
         return Http.get(`${API}/${id}`);
     }
 }
 
-export default Car;
+export default Instrument;
