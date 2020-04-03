@@ -10,7 +10,7 @@ import Cars from '../pages/Car'
 import Contact from '../pages/Contact'
 import Country from '../pages/Country'
 import Home from '../pages/Home'
-import Instruments from '../pages/Instrument'
+import Instrument from '../pages/Instrument'
 
 export default function BasicExample() {
     return (
@@ -37,7 +37,7 @@ export default function BasicExample() {
                     <Route path="/cars" component={Cars}/>
                     <Route path="/contacts" component={Contact}/>
                     <Route path="/countries" component={Country}/>
-                    <Route path="/instruments" component={Instruments}/>
+                    <Route path="/instruments" component={Instrument}/>
                 </Switch>
             </>
         </Router>

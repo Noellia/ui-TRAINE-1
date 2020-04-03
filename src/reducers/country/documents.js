@@ -2,6 +2,10 @@ import {
     FETCH_COUNTRIES_SUCCEEDED,
     FETCH_COUNTRIES_REQUESTED,
     SORT_COUNTRY,
+    SUBMIT_COUNTRY_DATA_SUCCEEDED,
+    FETCH_COUNTRY_REQUESTED,
+    FETCH_COUNTRY_SUCCEEDED,
+    SET_COUNTRY_DATA
     
 } from '../../actions/country';
 
@@ -9,7 +13,10 @@ import orderBy from 'lodash/orderBy'
 
 const initialState = {
     loading: false,
-    countries: []
+    success: false,
+    working: false,
+    countries: [],
+    country: {}
 };
 
 export default (state = initialState, action) => {
@@ -28,7 +35,16 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
-        default:
-            return state;
+        case SUBMIT_COUNTRY_DATA_SUCCEEDED:
+                return {...state, success: true, country: {}};
+        case FETCH_COUNTRY_REQUESTED:
+                return {...state, country: {}, loading: true};
+        case FETCH_COUNTRY_SUCCEEDED:
+                return {...state, country: action.country, loading: false};
+        case SET_COUNTRY_DATA:
+                return {...state, country: action.country, loading:false};
+            default:
+                return state;
+    
     }
 }

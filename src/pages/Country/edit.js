@@ -55,13 +55,17 @@ const Country = (props) => {
                         <Label for="exampleName">Nombre</Label>
                         <Input type="text" name="name" id="exampleName"placeholder="ingrese el nombre" 
                         onChange={({target: {value}}) => handleChange(value, 'name')}
+                        value = {country.name}
                         />
                     </FormGroup>
                 </Col>
                     <Col md={2}>
                     <FormGroup>
                         <Label for="exampleCode">Codigo</Label>
-                        <Input type="text" name="code" id="exampleCode" placeholder="ingrese el codigo" onChange={({target: {value}}) => handleChange(value, 'code')}/>
+                        <Input type="text" name="code" id="exampleCode" placeholder="ingrese el codigo"
+                        onChange={({target: {value}}) => handleChange(value, 'code')}
+                        value = {country.code}
+                        />
                     </FormGroup>
                 </Col>
             </Row>

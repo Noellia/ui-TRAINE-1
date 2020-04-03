@@ -55,21 +55,27 @@ const Instrument = (props) => {
                         <Label for="exampleHexcode">Hexcode</Label>
                         <Input type="text" name="hexcode" id="exampleHexcode"placeholder="ingrese el codigo hexcode" 
                         onChange={({target: {value}}) => handleChange(value, 'hexcode')}
+                        value = {instrument.hexcode}
                         />
                     </FormGroup>
                 </Col>
                     <Col md={2}>
                     <FormGroup>
                         <Label for="exampleFamily">Tipo</Label>
-                        <Input type="text" name="family" id="exampleFamily" placeholder="ingrese familia de instrumento, ej: vientos, cuerdas,etc.." onChange={({target: {value}}) => handleChange(value, 'family')}/>
+                        <Input type="text" name="family" id="exampleFamily" placeholder="ingrese familia de instrumento, ej: vientos, cuerdas,etc.." 
+                        onChange={({target: {value}}) => handleChange(value, 'family')}
+                        value = {instrument.family}/>
                     </FormGroup>
                 </Col>
             </Row>
             <Row form>
                 <Col md={4}>
                 <FormGroup>
-                    <Label for="exampleInstrument">Titulo</Label>
-                    <Input type="text" name="instrument" id="exampleInstrument" placeholder="ingrese instrumento" onChange={({target: {value}}) => handleChange(value, 'instrumento')}/>
+                    <Label for="exampleInstrument">Instrumento</Label>
+                    <Input type="text" name="instrument" id="exampleInstrument" placeholder="ingrese instrumento" 
+                    onChange={({target: {value}}) => handleChange(value, 'instrumento')}
+                    value = {instrument.instrument}
+                    />
                 </FormGroup>
                 </Col>
             </Row>

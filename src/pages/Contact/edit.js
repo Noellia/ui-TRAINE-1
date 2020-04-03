@@ -55,13 +55,17 @@ const Contact = (props) => {
                         <Label for="exampleName">Nombre</Label>
                         <Input type="text" name="first_name" id="exampleName"placeholder="ingrese su nombre" 
                         onChange={({target: {value}}) => handleChange(value, 'first_name')}
+                        value = {contact.first_name}
                         />
                     </FormGroup>
                 </Col>
                     <Col md={2}>
                     <FormGroup>
                         <Label for="exampleLastName">Apellido</Label>
-                        <Input type="text" name="last_name" id="exampleLastName" placeholder="ingrese su apellido" onChange={({target: {value}}) => handleChange(value, 'last_name')}/>
+                        <Input type="text" name="last_name" id="exampleLastName" placeholder="ingrese su apellido"
+                         onChange={({target: {value}}) => handleChange(value, 'last_name')}
+                         value = {contact.last_name}
+                         />
                     </FormGroup>
                 </Col>
             </Row>
@@ -69,7 +73,10 @@ const Contact = (props) => {
                 <Col md={4}>
                 <FormGroup>
                     <Label for="exampleJobTitle">Titulo</Label>
-                    <Input type="text" name="job_title" id="exampleJobTitle" placeholder="ingrese su titulo universitario" onChange={({target: {value}}) => handleChange(value, 'job_title')}/>
+                    <Input type="text" name="job_title" id="exampleJobTitle" placeholder="ingrese su titulo universitario" 
+                    onChange={({target: {value}}) => handleChange(value, 'job_title')}
+                    value = {contact.job_title}
+                    />
                 </FormGroup>
                 </Col>
             </Row>
@@ -77,7 +84,10 @@ const Contact = (props) => {
                 <Col md={4}>
                 <FormGroup>
                     <Label for="exampleRace">Nacionalidad</Label>
-                    <Input type="text" name="race" id="exampleRace" placeholder="ingrese su nacionalidad" onChange={({target: {value}}) => handleChange(value, 'race')}/>
+                    <Input type="text" name="race" id="exampleRace" placeholder="ingrese su nacionalidad" 
+                    onChange={({target: {value}}) => handleChange(value, 'race')}
+                    value = {contact.race}
+                    />
                 </FormGroup>
                 </Col>
             </Row>

@@ -1,6 +1,6 @@
 import Http from '.';
 
-const API = 'api/instrument';
+const API = 'api/instruments';
 
 class Instrument {
     static fetch(filters) {
