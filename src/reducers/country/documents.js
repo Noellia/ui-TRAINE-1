@@ -1,4 +1,6 @@
 import {
+    DELETE_COUNTRY_REQUESTED,
+    DELETE_COUNTRY_SUCCEEDED,
     FETCH_COUNTRIES_SUCCEEDED,
     FETCH_COUNTRIES_REQUESTED,
     SORT_COUNTRY,
@@ -35,6 +37,10 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
+        case DELETE_COUNTRY_REQUESTED:
+            return {...state, loading:true};
+        case DELETE_COUNTRY_SUCCEEDED:
+            return {...state, country: action.country, loading:false}
         case SUBMIT_COUNTRY_DATA_SUCCEEDED:
                 return {...state, success: true, country: {}};
         case FETCH_COUNTRY_REQUESTED:

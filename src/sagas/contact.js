@@ -1,7 +1,7 @@
 import {call, put, delay, select } from 'redux-saga/effects';
 
 import ContactAPI from '../Api/contact';
-import {fetchContactsSucceeded, submitContactDataSucceeded, fetchContactSucceeded} from '../actions/contact';
+import {fetchContactsSucceeded, submitContactDataSucceeded, fetchContactSucceeded, deleteContactSucceeded} from '../actions/contact';
 
 export function* fetchContacts({filter}) {
     try {
@@ -30,4 +30,12 @@ export function* fetchContactRequested({id}) {
     // hacer Llmado a la api para el fetch de 1 contacto
     const contact = yield call(ContactAPI.fetchOne, id);
     yield put(fetchContactSucceeded(contact))
+}
+
+export function* deleteContact({id}) {
+    const success = yield call(ContactAPI.deleteContact, id);
+    yield delay(500);
+    yield put(
+    deleteContactSucceeded(success)
+    );
 }

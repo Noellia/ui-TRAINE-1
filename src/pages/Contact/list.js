@@ -5,18 +5,30 @@ import {Link} from 'react-router-dom';
 import {
     Container,
     Button,
+    ButtonGroup,
     Row,
     Col,
-    Spinner
+    Spinner,
+    Modal,
+    ModalFooter,
+    ModalHeader,
+    ModalBody
 } from 'reactstrap';
 
 import {
+    deleteContactRequested,
     fetchContactsRequested,
     sortContact,
     submitContactDataRequested
 } from '../../actions/contact'
 
 class App extends PureComponent {
+        constructor(props) {
+        super(props);
+        this.state = {
+            modal: null
+        };
+    }
     componentDidMount() {
         this.props.getContacts();
     }
@@ -34,6 +46,8 @@ class App extends PureComponent {
             onSort,
             loading
         } = this.props;
+
+        const {modal} = this.state;
         return (
             <Container>
                 <Row>
@@ -58,11 +72,35 @@ class App extends PureComponent {
                                 limit,
                                 total,
                                 onPageClick: this.handlePagination,
+                                onDelete: modal => this.setState({modal}),
                                 linkTo: 'contacts'
                             }}/>
                         )}
                     </Col>
                 </Row>
+                {modal && (
+                    <Modal isOpen>
+                        <ModalHeader>
+                            ¡Usted esta a punto de borrar un elemento!
+                        </ModalHeader>
+                        <ModalBody>
+                            Confirme si esta de acuerdo: {modal.first_name} {modal.last_name}
+                        </ModalBody>
+                        <ModalFooter>
+                            <ButtonGroup>
+                                <Button color="danger" onClick={() => {
+                                    this.props.deleteContact(modal.id)
+                                    this.setState({modal: null})
+                                }} >
+                                    Aceptar
+                                </Button>
+                                <Button color="info" onClick={() => this.setState({modal: null})}>
+                                    Cancelar
+                                </Button>
+                            </ButtonGroup>
+                        </ModalFooter>
+                    </Modal>
+            )}
             </Container>
         )
     }
@@ -82,7 +120,8 @@ const mapStateToProps = (state /* nuestro Store */, ownProps /*  */ ) => {
 const mapDispatchToProps = (dispatch /* acciones a disparar */, ownProps /*  */ ) => ({
     getContacts: filters => dispatch(fetchContactsRequested(filters)),
     onSort: sort => dispatch(sortContact(sort)),
-    submitContactData: () => dispatch(submitContactDataRequested()) 
+    submitContactData: () => dispatch(submitContactDataRequested()),
+    deleteContact: id => dispatch(deleteContactRequested(id)) 
 
 })
 

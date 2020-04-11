@@ -1,4 +1,6 @@
 import {
+    DELETE_INSTRUMENT_REQUESTED,
+    DELETE_INSTRUMENT_SUCCEEDED,
     FETCH_INSTRUMENTS_REQUESTED,
     FETCH_INSTRUMENTS_SUCCEEDED,
     SORT_INSTRUMENT,
@@ -35,6 +37,10 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
+            case DELETE_INSTRUMENT_REQUESTED:
+                return {...state, loading: true};
+            case DELETE_INSTRUMENT_SUCCEEDED:
+                return {...state, instrument: action.instrument, loading: false};
             case SUBMIT_INSTRUMENT_DATA_SUCCEEDED:
                 return {...state, success: true, instrument: {}};
             case FETCH_INSTRUMENT_REQUESTED:

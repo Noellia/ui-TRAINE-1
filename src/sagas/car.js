@@ -7,7 +7,7 @@ import {
 
 import CarAPI from '../Api/car';
 import {
-    fetchCarsSucceeded, submitCarDataSucceeded, fetchCarSucceeded
+    fetchCarsSucceeded, submitCarDataSucceeded, fetchCarSucceeded, deleteCarSucceeded
 } from '../actions/car';
 
 export function* fetchCars({filter}) {
@@ -38,4 +38,12 @@ export function* fetchCarRequested({id}) {
     // hacer Llmado a la api para el fetch de 1 contacto
     const car = yield call(CarAPI.fetchOne, id);
     yield put(fetchCarSucceeded(car))
+}
+
+export function* deleteCar({id}) {
+    const success = yield call(CarAPI.deleteCar, id);
+    yield delay(500);
+    yield put(
+    deleteCarSucceeded(success)
+    );
 }

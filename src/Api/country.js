@@ -17,6 +17,9 @@ class Country {
     static fetchOne(id) {
         return Http.get(`${API}/${id}`);
     }
+    static deleteCountry(id) {
+        return Http.delete(`${API}/${id}`);
+    }
 }
 
 export default Country;

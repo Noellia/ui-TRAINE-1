@@ -1,4 +1,6 @@
 import {
+    DELETE_CONTACT_REQUESTED,
+    DELETE_CONTACT_SUCCEEDED,
     FETCH_CONTACTS_REQUESTED,
     FETCH_CONTACTS_SUCCEEDED,
     SORT_CONTACT,
@@ -34,7 +36,10 @@ export default (state = initialState, action) => {
                     [action.sort.sort]
                 )
             };
-
+            case DELETE_CONTACT_REQUESTED:
+                return{...state, loading: true};
+            case DELETE_CONTACT_SUCCEEDED:
+                return{...state, contact: action.contact, loading: false}
             case SUBMIT_CONTACT_DATA_SUCCEEDED:
                 return {...state, success: true, contact: {}};
             case FETCH_CONTACT_REQUESTED:

@@ -9,7 +9,8 @@ import CountryAPI from '../Api/country';
 import {
     fetchCountriesSucceeded,
     fetchCountrySucceeded,
-    submitCountryDataSucceeded
+    submitCountryDataSucceeded,
+    deleteCountrySucceeded
 } from '../actions/country';
 
 export function* fetchCountries({filter}) {
@@ -42,4 +43,12 @@ export function* fetchCountry({id}) {
     // hacer Llmado a la api para el fetch de 1 contacto
     const country = yield call(CountryAPI.fetchOne, id);
     yield put(fetchCountrySucceeded(country))
+}
+
+export function* deleteCountry({id}) {
+    const success = yield call(CountryAPI.deleteCountry, id);
+    yield delay(500);
+    yield put(
+    deleteCountrySucceeded(success)
+    );
 }

@@ -1,4 +1,6 @@
 import {
+    DELETE_CAR_REQUESTED,
+    DELETE_CAR_SUCCEEDED,
     FETCH_CARS_REQUESTED,
     FETCH_CARS_SUCCEEDED,
     SORT_CAR,
@@ -37,6 +39,10 @@ export default (state = initialState, action) => {
             };
             case SUBMIT_CAR_DATA_SUCCEEDED:
                 return {...state, success: true, car: {}};
+            case DELETE_CAR_REQUESTED:
+                return {...state, loading: true}
+            case DELETE_CAR_SUCCEEDED:
+                    return {...state, car: action.car, loading: false};
             case FETCH_CAR_REQUESTED:
                 return {...state, car: {}, loading: true};
             case FETCH_CAR_SUCCEEDED:

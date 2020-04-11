@@ -17,6 +17,9 @@ class Contact {
     static fetchOne(id) {
         return Http.get(`${API}/${id}`);
     }
+    static deleteContact(id) {
+        return Http.delete(`${API}/${id}`);
+    }
 }
 
 export default Contact;

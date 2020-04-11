@@ -18,6 +18,10 @@ class Car {
     static fetchOne(id) {
         return Http.get(`${API}/${id}`);
     }
+
+    static deleteCar(id) {
+        return Http.delete(`${API}/${id}`);
+    }
 }
 
 export default Car;

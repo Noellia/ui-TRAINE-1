@@ -30,3 +30,9 @@ export const fetchCarRequested = id => ({type: FETCH_CAR_REQUESTED, id}) // Disp
 export const fetchCarSucceeded = (car) => ({
     type: FETCH_CAR_SUCCEEDED, car
 }) // Disparador o Action Creator
+
+export const DELETE_CAR_REQUESTED = 'DELETE_CARS_REQUESTED'; // Accion | Action
+export const DELETE_CAR_SUCCEEDED = 'DELETE_CARS_SUCCEEDED'; // Accion | Action
+
+export const deleteCarRequested = id => ({type: DELETE_CAR_REQUESTED, id});
+export const deleteCarSucceeded = constant({type: DELETE_CAR_SUCCEEDED});

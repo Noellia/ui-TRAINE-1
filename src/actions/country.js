@@ -32,3 +32,9 @@ export const submitCountryDataSucceeded = constant({type: SUBMIT_COUNTRY_DATA_SU
 export const SET_COUNTRY_DATA = 'SET_COUNTRY_DATA';
 
 export const setCountryData = country => ({type: SET_COUNTRY_DATA, country});
+
+export const DELETE_COUNTRY_REQUESTED = 'DELETE_COUNTRY_REQUESTED'; // Accion | Action
+export const DELETE_COUNTRY_SUCCEEDED = 'DELETE_COUNTRY_SUCCEEDED'; // Accion | Action
+
+export const deleteCountrytRequested = id => ({type: DELETE_COUNTRY_REQUESTED, id});
+export const deleteCountrySucceeded = constant({type: DELETE_COUNTRY_SUCCEEDED});

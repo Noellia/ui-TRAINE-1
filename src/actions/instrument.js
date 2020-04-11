@@ -17,12 +17,9 @@ export const submitInstrumentDataRequested = constant({type: SUBMIT_INSTRUMENT_D
 export const submitInstrumentDataSucceeded = constant({type: SUBMIT_INSTRUMENT_DATA_SUCCEEDED});
 
 export const SET_INSTRUMENT_DATA = 'SET_INSTRUMENT_DATA';
-
 export const setInstrumentData = instrument => ({type: SET_INSTRUMENT_DATA, instrument});
 
-// Accion | Action
 export const SORT_INSTRUMENT = 'SORT_INSTRUMENT';
-// Disparador o Action Creator
 export const sortInstrument = sort => ({type: SORT_INSTRUMENT, sort});
 
 export const FETCH_INSTRUMENT_REQUESTED = 'FETCH_INSTRUMENT_REQUESTED'; // Accion | Action
@@ -32,3 +29,9 @@ export const fetchInstrumentRequested = id => ({type: FETCH_INSTRUMENT_REQUESTED
 export const fetchInstrumentSucceeded = (instrument) => ({
     type: FETCH_INSTRUMENT_SUCCEEDED, instrument
 }) // Disparador o Action Creator
+
+export const DELETE_INSTRUMENT_REQUESTED = 'DELETE_INSTRUMENT_REQUESTED'; 
+export const DELETE_INSTRUMENT_SUCCEEDED = 'DELETE_INSTRUMENT_SUCCEEDED'; 
+
+export const deleteInstrumentRequested = id => ({type: DELETE_INSTRUMENT_REQUESTED, id});
+export const deleteInstrumentSucceeded = constant({type: DELETE_INSTRUMENT_SUCCEEDED});

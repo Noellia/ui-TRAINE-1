@@ -1,7 +1,7 @@
 import {call, put, delay, select } from 'redux-saga/effects';
 
 import InstrumentAPI from '../Api/instrument';
-import {fetchInstrumentsSucceeded, submitInstrumentDataSucceeded, fetchInstrumentSucceeded} from '../actions/instrument';
+import {fetchInstrumentsSucceeded, submitInstrumentDataSucceeded, fetchInstrumentSucceeded, deleteInstrumentSucceeded} from '../actions/instrument';
 
 export function* fetchInstruments({filter}) {
     try {
@@ -30,4 +30,11 @@ export function* fetchInstrumentRequested({id}) {
     // hacer Llmado a la api para el fetch de 1 contacto
     const instrument = yield call(InstrumentAPI.fetchOne, id);
     yield put(fetchInstrumentSucceeded(instrument))
+}
+export function* deleteInstrument({id}) {
+    const success = yield call(InstrumentAPI.deleteInstrument, id);
+    yield delay(500);
+    yield put(
+    deleteInstrumentSucceeded(success)
+    );
 }

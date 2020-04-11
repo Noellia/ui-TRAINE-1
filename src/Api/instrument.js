@@ -18,6 +18,9 @@ class Instrument {
     static fetchOne(id) {
         return Http.get(`${API}/${id}`);
     }
+    static deleteInstrument(id) {
+        return Http.delete(`${API}/${id}`);
+    }
 }
 
 export default Instrument;

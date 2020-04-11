@@ -1,4 +1,6 @@
 import set from 'lodash/set';
+import { Link } from 'react-router-dom';
+
 
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -85,7 +87,12 @@ const Car = (props) => {
             </Row>
             <Row form>
                 <Col>
-                    <Button onClick={() => submit()}> Guardar </Button>
+                    <Button onClick={() => submit()}
+                    alert 
+                    tag={Link} color="primary"
+                    className="badge-pill"
+                    > Guardar 
+                    </Button>
                 </Col>
             </Row>
         </Form>

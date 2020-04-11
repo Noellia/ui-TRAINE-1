@@ -32,3 +32,9 @@ export const fetchContactRequested = id => ({type: FETCH_CONTACT_REQUESTED, id})
 export const fetchContactSucceeded = (contact) => ({
     type: FETCH_CONTACT_SUCCEEDED, contact
 }) // Disparador o Action Creator
+
+export const DELETE_CONTACT_REQUESTED = 'DELETE_CONTACT_REQUESTED'; // Accion | Action
+export const DELETE_CONTACT_SUCCEEDED = 'DELETE_CONTACT_SUCCEEDED'; // Accion | Action
+
+export const deleteContactRequested = id => ({type: DELETE_CONTACT_REQUESTED, id});
+export const deleteContactSucceeded = constant({type: DELETE_CONTACT_SUCCEEDED}); 
